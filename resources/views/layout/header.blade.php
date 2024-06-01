@@ -6,5 +6,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/libs/datatable/dataTables.dataTables.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/libs/sweetalert/sweetalert2.min.css') }}" />
     @stack('custom-css')
 </head>

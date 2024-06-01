@@ -24,6 +24,7 @@
                 <hr>
                 <div style="display: none" class="default-bab">
                     <form action="">
+                        <input type="hidden" name="id">
                         <input type="hidden" name="modulID" value="{{ $id ?? '' }}">
                         <div class="mb-3">
                             <label for="" class="form-label">Title Bab</label>
@@ -36,6 +37,11 @@
                         <div class="mb-3">
                             <label for="" class="form-label">Task</label>
                             <textarea name="taskBab" required autocomplete="off" class="form-control" rows="5"></textarea>
+                        </div>
+                        <div class="text-right">
+                            <butotn type="button" class="btn btn-danger btn-sm btn-delete-bab">
+                                Delete
+                            </butotn>
                         </div>
                     </form>
                     <hr>
@@ -81,6 +87,7 @@
                 if (response.data.Babs.length > 0) {
                     $.each(response.data.Babs, function (index, element) {
                         bab = $(".default-bab:hidden").clone()
+                        bab.find("[name='id']").val(element.ID)
                         bab.find("[name='titleBab']").val(element.Title)
                         bab.find("[name='descriptionBab']").val(element.Description)
                         bab.find("[name='taskBab']").val(element.Task)
@@ -93,6 +100,32 @@
         });
     }
 
+    function submitBab(id)
+    {
+        $("input[name='modulID']").each(function(index, element) {
+            $(element).val(id)
+        })
+
+        $(".default-bab:visible").each(function(index, element) {
+            dataBab = new FormData($(element).find('form')[0])
+
+            $.ajax({
+                type: "POST",
+                url: apiRoutes.modulBab,
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader('Authorization', 'Bearer '+token());
+                },
+                processData: false,
+                contentType: false,
+                data: dataBab,
+                async: false,
+                error: function() {
+                    $("#loader-overlay").hide();
+                }
+            });
+        })
+    }
+
     $(function () {
         if (modulID != "")
             renderData()
@@ -103,6 +136,25 @@
             bab.show()
 
             $(".bab-container").append(bab)
+        })
+
+        $(document).on('click', '.btn-delete-bab', function() {
+            element = $(this).closest(".default-bab")
+
+            if (id = element.find("[name='id']").val()) {
+                $.ajax({
+                    type: "DELETE",
+                    url: apiRoutes.modulBab + "/" + id,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', 'Bearer '+token());
+                    },
+                    success: function (response) {
+                        element.remove();
+                    }
+                });
+            } else {
+                element.remove();
+            }
         })
 
         $(document).on('submit', '#formModul', function(e) {
@@ -123,26 +175,7 @@
                 contentType: false,
                 success: function (response) {
                     if ($(".default-bab:visible").length >= 1) {
-                        $("input[name='modulID']").each(function(index, element) {
-                            $(element).val(response.data.modulID)
-                        })
-
-                        $(".default-bab:visible").each(function(index, element) {
-                            dataBab = new FormData($(element).find('form')[0])
-
-                            $.ajax({
-                                type: "POST",
-                                url: apiRoutes.modulBab,
-                                beforeSend: function (xhr) {
-                                    xhr.setRequestHeader('Authorization', 'Bearer '+token());
-                                },
-                                data: dataBab,
-                                async: false,
-                                error: function() {
-                                    $("#loader-overlay").hide();
-                                }
-                            });
-                        })
+                        submitBab(response.data.modulID)
                     }
 
                     window.location = webRoutes.modul

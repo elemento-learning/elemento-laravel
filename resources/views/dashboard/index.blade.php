@@ -13,7 +13,7 @@
             <div class="card card-flush">
                 <div class="card-header">Aktivitas Siswa</div>
                 <div class="card-body">
-                    Content
+                    <div id="chart"></div>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
                         <i class="ti ti-user dashboard-icon text-white"></i>
                     </span>
                     <span class="text-primary fw-bold">
-                        Pengumpulan Tugas
+                        Pengumpulan Quiz
                     </span>
                 </div>
                 <div class="card-body text-center">
@@ -76,8 +76,19 @@
                         Baru Saja Terjadi
                     </span>
                 </div>
-                <div class="card-body">
-                    Content
+                <div class="card-body d-flex flex-column gap-3">
+                    @foreach (range(0, 3) as $item)
+                    <div class="border-bottom border-2 d-flex justify-content-between gap-2 pb-2">
+                        <div class="d-flex justify-content-between gap-2">
+                            <img src="{{ asset('/assets/images/profile/user-1.jpg') }}" alt="" width="50" height="50" class="rounded">
+                            <div class="d-flex flex-column gap-2">
+                                <span><b>John Doe</b> * 0878789019</span>
+                                <span class="text-secondary">Melakukan pengumpulan tugas materi "Konfigurasi elektron kulit"</span>
+                            </div>
+                        </div>
+                        <a href="#" class="align-self-center"><b>Lihat</b></a>
+                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -114,4 +125,5 @@
 @push('custom-script')
 <script src="{{ asset('assets/libs/calendar/vanilla-calendar.min.js') }}"></script>
 <script src="{{ asset('assets/js/pages/dashboard.js') }}"></script>
+<script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
 @endpush

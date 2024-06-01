@@ -35,4 +35,41 @@ const calendarSettings = {
 $(function () {
     let timelineCalendar = new VanillaCalendar('#timelineCalendar', calendarSettings);
     timelineCalendar.init()
+
+    var chart = {
+        series: [{
+            name: "Value",
+            data: [ 10, 50, 40, 25, 65, 120, 110, 90, 150, 90, 70, 40],
+        }],
+        chart: {
+            type: 'area',
+            height: 350,
+            zoom: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+
+        title: {
+            enabled: false,
+        },
+        subtitle: {
+            enabled: false,
+        },
+        labels: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        yaxis: {
+            opposite: true
+        },
+        legend: {
+            horizontalAlign: 'left'
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), chart);
+    chart.render();
 });

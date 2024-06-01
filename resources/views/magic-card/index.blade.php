@@ -54,7 +54,7 @@
                             <a href="${webRoutes.magicCardEdit.replace(":id", element.ID)}" class="btn btn-warning btn-sm">
                                 View/Edit
                             </a>
-                            <a href="#" class="btn btn-danger btn-sm">
+                            <a href="javascript:void(0)" data-nama="${element.NamaMolekul}" data-id="${element.ID}" class="btn btn-danger btn-sm btn-delete">
                                 Delete
                             </a>
                         </td>
@@ -74,6 +74,32 @@
 
     $(function () {
         renderTable()
+
+        $(document).on('click', '.btn-delete', function() {
+            let id = $(this).data("id")
+            let nama = $(this).data("nama")
+
+            Swal.fire({
+                title: `Delete Magic Card <br> ${nama}?`,
+                icon: "info",
+                showCancelButton: true,
+                confirmButtonText: "Save",
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "DELETE",
+                        url: apiRoutes.magicCard + "/" + id,
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader('Authorization', 'Bearer '+token());
+                        },
+                        success: function (response) {
+                            window.location.reload()
+                        }
+                    });
+                }
+            });
+        })
     });
 </script>
 @endpush

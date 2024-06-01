@@ -19,3 +19,5 @@ Route::view('/quiz/show/{id}', 'quiz.detail-quiz')->name('quizShow');
 
 Route::view('/quiz/{id}/questions', 'quiz.question-form')->name('quiz.question.create');
 Route::view('/quiz/{id}/questions/{questionID}', 'quiz.question-form')->name('quizQuestionEdit');
+
+Route::view('/feedback', 'feedback.index')->name('feedback');

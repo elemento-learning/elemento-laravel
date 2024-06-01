@@ -33,6 +33,14 @@
             </a>
         </li>
         <li class="sidebar-item mt-2">
+            <a class="sidebar-link {{ request()->is('feedback', 'feedback/*') ? 'active' : '' }}" href="{{ route('feedback') }}" aria-expanded="false">
+                <span>
+                    <i class="ti ti-files"></i>
+                </span>
+                <span class="hide-menu">Feedback</span>
+            </a>
+        </li>
+        <li class="sidebar-item mt-2">
             <a class="sidebar-link text-danger" href="{{ route('login') }}" aria-expanded="false">
                 <span>
                     <i class="ti ti-logout"></i>
