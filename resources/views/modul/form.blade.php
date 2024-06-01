@@ -80,7 +80,7 @@
 
                 if (response.data.Babs.length > 0) {
                     $.each(response.data.Babs, function (index, element) {
-                        bab = $(".default-bab").clone()
+                        bab = $(".default-bab:hidden").clone()
                         bab.find("[name='titleBab']").val(element.Title)
                         bab.find("[name='descriptionBab']").val(element.Description)
                         bab.find("[name='taskBab']").val(element.Task)
@@ -98,7 +98,7 @@
             renderData()
 
         $(document).on('click', '.btn-add-bab', function() {
-            bab = $(".default-bab").clone()
+            bab = $(".default-bab:hidden").clone()
 
             bab.show()
 

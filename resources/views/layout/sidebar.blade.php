@@ -25,6 +25,14 @@
             </a>
         </li>
         <li class="sidebar-item mt-2">
+            <a class="sidebar-link {{ request()->is('quiz', 'quiz/*') ? 'active' : '' }}" href="{{ route('quiz') }}" aria-expanded="false">
+                <span>
+                    <i class="ti ti-pencil"></i>
+                </span>
+                <span class="hide-menu">Quiz</span>
+            </a>
+        </li>
+        <li class="sidebar-item mt-2">
             <a class="sidebar-link text-danger" href="{{ route('login') }}" aria-expanded="false">
                 <span>
                     <i class="ti ti-logout"></i>

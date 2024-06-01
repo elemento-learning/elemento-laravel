@@ -87,7 +87,7 @@
 
                 if (response.data.ListSenyawa.length > 0) {
                     $.each(response.data.ListSenyawa, function (index, element) {
-                        senyawa = $(".senyawa-unsur").clone()
+                        senyawa = $(".senyawa-unsur:hidden").clone()
                         senyawa.find("[name='judul']").val(element.Judul)
                         senyawa.find("[name='unsur']").val(element.Unsur)
                         senyawa.find("[name='deskripsi']").val(element.Deskripsi)
@@ -105,7 +105,7 @@
             renderData()
 
         $(document).on('click', '.btn-add-senyawa', function() {
-            senyawa = $(".senyawa-unsur").clone()
+            senyawa = $(".senyawa-unsur:hidden").clone()
 
             senyawa.show()
 
