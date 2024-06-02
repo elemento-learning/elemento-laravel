@@ -30,7 +30,7 @@
                     </span>
                 </div>
                 <div class="card-body text-center">
-                    <h1 class="fw-bold fs-7">340</h1>
+                    <h1 class="fw-bold fs-7">{{ rand(300, 340) }}</h1>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
                     </span>
                 </div>
                 <div class="card-body text-center">
-                    <h1 class="fw-bold fs-7">35</h1>
+                    <h1 class="fw-bold fs-7">{{ rand(25, 35) }}</h1>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@
                     </span>
                 </div>
                 <div class="card-body text-center">
-                    <h1 class="fw-bold fs-7">34</h1>
+                    <h1 class="fw-bold fs-7">{{ rand(10, 34) }}</h1>
                 </div>
             </div>
         </div>
@@ -77,12 +77,12 @@
                     </span>
                 </div>
                 <div class="card-body d-flex flex-column gap-3">
-                    @foreach (range(0, 3) as $item)
+                    @foreach (range(1, 3) as $item)
                     <div class="border-bottom border-2 d-flex justify-content-between gap-2 pb-2">
                         <div class="d-flex justify-content-between gap-2">
                             <img src="{{ asset('/assets/images/profile/user-1.jpg') }}" alt="" width="50" height="50" class="rounded">
                             <div class="d-flex flex-column gap-2">
-                                <span><b>John Doe</b> * 0878789019</span>
+                                <span><b>{{ fake()->name() }}</b> * 0878789019</span>
                                 <span class="text-secondary">Melakukan pengumpulan tugas materi "Konfigurasi elektron kulit"</span>
                             </div>
                         </div>

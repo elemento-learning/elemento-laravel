@@ -5,6 +5,11 @@
         <div class="card col-md-12">
             <div class="card-header d-flex justify-content-between">
                 <h4 class="card-title">List Quiz</h4>
+                <div class="card-toolbar">
+                    <a href="{{ route('quiz.create') }}" class="btn btn-primary btn-sm">
+                        Tambah Data
+                    </a>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

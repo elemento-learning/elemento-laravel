@@ -12,8 +12,9 @@
                         <thead>
                             <tr>
                                 <th scope="col" class="w-5">#</th>
-                                <th scope="col" class="w-25">Name</th>
-                                <th scope="col" class="w-25">Type</th>
+                                <th scope="col" class="w-25">Guru</th>
+                                <th scope="col" class="w-25">Siswa</th>
+                                <th scope="col" class="w-25">Kategori</th>
                                 <th scope="col" class="w-25">Feedback</th>
                             </tr>
                         </thead>
@@ -29,24 +30,23 @@
 <script>
     function renderTable() {
         $.ajax({
-            url: apiRoutes.quiz,
+            url: apiRoutes.feedback,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', 'Bearer '+token());
             },
             success: function (response) {
                 html = ""
-                // $.each(response.data, function (index, element) {
-                for (let index = 0; index < 25; index++) {
+                $.each(response.data, function (index, element) {
                     html += `
                     <tr>
                         <td>${index+1}</td>
-                        <td>Siswa 1</td>
-                        <td>Feedback Type</td>
-                        <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, asperiores et error consequuntur harum earum dolorum quam rem minus a eligendi laudantium quasi suscipit dolores porro, doloremque sed corporis ipsa.</td>
+                        <td>${element.Teacher}</td>
+                        <td>${element.Student}</td>
+                        <td>${element.Category ? element.Category : "-"}</td>
+                        <td>${element.FeedBack}</td>
                     </tr>
                     `
-                }
-                // });
+                });
 
                 $("#tableFeedback").find("tbody").html("")
                 if ( $.fn.DataTable.isDataTable('#tableFeedback') ) {

@@ -15,6 +15,7 @@ Route::view('/magic-card/create', 'magic-card.form')->name('magic-card.create');
 Route::view('/magic-card/edit/{id}', 'magic-card.form')->name('magicCardEdit');
 
 Route::view('/quiz', 'quiz.index')->name('quiz');
+Route::view('/quiz/create', 'quiz.form')->name('quiz.create');
 Route::view('/quiz/show/{id}', 'quiz.detail-quiz')->name('quizShow');
 
 Route::view('/quiz/{id}/questions', 'quiz.question-form')->name('quiz.question.create');
