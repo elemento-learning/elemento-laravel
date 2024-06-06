@@ -40,10 +40,10 @@
                     html += `
                     <tr>
                         <td>${index+1}</td>
-                        <td>${element.Teacher}</td>
-                        <td>${element.Student}</td>
-                        <td>${element.Category ? element.Category : "-"}</td>
-                        <td>${element.FeedBack}</td>
+                        <td>${element.teacher}</td>
+                        <td>${element.student}</td>
+                        <td>${element.category ? element.category : "-"}</td>
+                        <td>${element.feedback}</td>
                     </tr>
                     `
                 });
