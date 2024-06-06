@@ -3,6 +3,7 @@ $(function () {
         e.preventDefault()
 
         data = {
+            role: $("input[name='role']").val(),
             NamaLengkap: $("input[name='NamaLengkap']").val(),
             NamaHandphone: $("input[name='NamaHandphone']").val(),
             Email: $("input[name='Email']").val(),
